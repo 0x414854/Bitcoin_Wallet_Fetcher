@@ -58,11 +58,11 @@ Bitcoin Wallet Fetcher is a Python script that :
 1. **Clone this repository**
 
    ```bash
-   git clone https://github.com/0x414854/Mnemonic_Hunt.git
+   git clone https://github.com/0x414854/Bitcoin_Wallet_Fetcher.git
    ```
 
    ```bash
-   cd Mnemonic_Hunt
+   cd Bitcoin_Wallet_Fetcher
 
    ```
 
@@ -90,8 +90,8 @@ Bitcoin Wallet Fetcher is a Python script that :
 
 ## **Roadmap**
 
-- [ ] **Enable sharing of raw and processed files**
-- [ ] **Add support for other cryptocurrencies**
+- [ ] 💾 **Enable sharing of raw and processed files**
+- [ ] 🪙 **Add support for other cryptocurrencies**
   - [ ] **BCH**
   - [ ] **DOGE**
   - [ ] **EGLD**
@@ -100,7 +100,7 @@ Bitcoin Wallet Fetcher is a Python script that :
   - [ ] **SOL**
   - [ ] **XRP**
   - [ ] **ZCASH**
-- [ ] **Implement multilingual support for international accessibility**
+- [ ] 🎓 **Implement multilingual support**
   - [ ] **French**
   - [ ] **Italian**
   - [ ] **Spanich**
