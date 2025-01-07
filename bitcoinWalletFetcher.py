@@ -12,19 +12,20 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from tqdm import tqdm
 
-logging.basicConfig(
-    filename='bwf.log', 
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
-
 load_dotenv()
 
 DOWNLOAD_FOLDER = os.getenv('DOWNLOAD_FOLDER')
 BASE_FILENAME = os.getenv('BASE_FILENAME')
+LOG_FILE = os.getenv("LOG_FILE")
 PROCESSED_FOLDER = os.getenv('PROCESSED_FOLDER')
 WEBSITE_URL = os.getenv('WEBSITE_URL')
 XPATH_FILE = os.getenv('XPATH_FILE')
+
+logging.basicConfig(
+    filename=LOG_FILE, 
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
 
 class FileDownloader:
     def __init__(self, download_folder, website_url, xpath_file):

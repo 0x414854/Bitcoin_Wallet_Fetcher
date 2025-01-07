@@ -8,7 +8,7 @@
 
 - [Project Description](#project-description)
 - [Table of Contents](#table-of-contents)
-- [What is Bitcoin Wallet Fetcher?](#what-is-bitcoin-wallet-fetcher)
+- [What is Bitcoin Wallet Fetcher ?](#what-is-bitcoin-wallet-fetcher-?)
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
@@ -26,7 +26,7 @@
 
 **Bitcoin Wallet Fetcher** (_BWF_) is designed to retrieve large datasets of Bitcoin wallet addresses from specified online sources (Blockchair). **It automates downloading, decompressing, and categorizing these addresses into meaningful groupings such as balances, prefix types, and subsets for quick reference or downstream processing.**
 
-## What is Bitcoin Wallet Fetcher?
+## What is Bitcoin Wallet Fetcher ?
 
 Bitcoin Wallet Fetcher is a Python script that :
 
@@ -75,11 +75,12 @@ Bitcoin Wallet Fetcher is a Python script that :
 3. **Create a `.env` file with the following structure :**
 
    ```makefile
-   DOWNLOAD_FOLDER = `Path/To/Download/Folder`
-   BASE_FILENAME = `blockchair_bitcoin_addresses_latest`
-   PROCESSED_FOLDER = `Your/Processed/Folder/Path
-   WEBSITE_URL = `https://gz.blockchair.com/bitcoin/addresses/`
-   XPATH_FILE = '/html/body/pre/a[2]'
+   DOWNLOAD_FOLDER = Path/To/Download/Folder
+   BASE_FILENAME = blockchair_bitcoin_addresses_latest
+   LOG_FILE = ./logs/bwf.log
+   PROCESSED_FOLDER = Your/Processed/Folder/Path
+   WEBSITE_URL = https://gz.blockchair.com/bitcoin/addresses/
+   XPATH_FILE = /html/body/pre/a[2]
    ```
 
 4. **You're ready to run the program** !
@@ -113,9 +114,11 @@ Bitcoin Wallet Fetcher is a Python script that :
 <br>├── .gitignore
 <br>├── LICENSE
 <br>├── bitcoinWalletFetcher.py
-<br>├── (bwf.log)
 <br>├── README.md
-<br>└── requirements.txt
+<br>├── requirements.txt
+<br>├── docs/
+<br>└── (logs/)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;└── bwf.log
 
 ## **Contributions**
 
