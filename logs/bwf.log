@@ -31,3 +31,5 @@
 2025-01-07 09:44:37,568 - INFO - File processed and moved to : ./BTC/WalletsBTC_20250107
 2025-01-07 09:44:37,578 - INFO - Task completed.
 2025-01-07 09:44:37,578 - INFO - Waiting until tomorrow 4:00 : 18.0 hours and 15.0 minutes.
+2025-01-09 08:17:27,769 - INFO - Next execution time : 2025-01-10 05:58:00
+2025-01-09 08:17:27,769 - INFO - Waiting 21 hours and 40 minutes before execution.

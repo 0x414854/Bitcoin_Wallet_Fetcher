@@ -15,7 +15,7 @@ from tqdm import tqdm
 load_dotenv()
 
 DOWNLOAD_FOLDER = os.getenv('DOWNLOAD_FOLDER')
-BASE_FILENAME = os.getenv('BASE_FILENAME')
+BASE_FILENAME = os.getenv('BTC_BASE_FILENAME')
 LOG_FILE = os.getenv("LOG_FILE")
 PROCESSED_FOLDER = os.getenv('PROCESSED_FOLDER')
 WEBSITE_URL = os.getenv('WEBSITE_URL')
@@ -27,6 +27,14 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
+USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:118.0) Gecko/20100101 Firefox/118.0",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 12_6_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Safari/605.1.15",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Linux; Android 13; SM-G998B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Mobile Safari/537.36",
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/117.0.0.0 Mobile/15E148 Safari/604.1"
+]
+
 class FileDownloader:
     def __init__(self, download_folder, website_url, xpath_file):
         self.download_folder = download_folder
@@ -37,9 +45,14 @@ class FileDownloader:
         chrome_options = Options()
         chrome_options.add_experimental_option("prefs", {"download.default_directory": self.download_folder})
         chrome_options.add_experimental_option("detach", True)
+        chrome_options.add_argument("--disable-blink-features=AutomationControlled")
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
+        user_agent = random.choice(USER_AGENTS)
+        chrome_options.add_argument(f"user-agent={user_agent}")
+        logging.info(f"Using User-Agent : {user_agent}")
+
         return webdriver.Chrome(options=chrome_options)
 
     def download_file(self):
@@ -47,13 +60,15 @@ class FileDownloader:
         try:
             logging.info("Accessing the website to download the file.")
             driver.get(self.website_url)
-            time.sleep(5)
+            time.sleep(random.uniform(3, 6))
+
             file_element = driver.find_element(By.XPATH, self.xpath_file)
             file_element.click()
             logging.info("Download in progress...")
+            
             download_in_progress = True
             while download_in_progress:
-                time.sleep(1)
+                time.sleep(random.uniform(1, 2))
                 download_in_progress = any(
                     file.endswith(".crdownload") for file in os.listdir(self.download_folder)
                 )
@@ -175,7 +190,7 @@ def schedule_daily_task():
 
         tomorrow_4am = random_time + timedelta(days=1)
         time_until_next_day = (tomorrow_4am.replace(hour=4, minute=0, second=0, microsecond=0) - datetime.now()).total_seconds()
-        logging.info(f"Waiting until tomorrow 4:00 : {time_until_next_day // 3600} hours and {(time_until_next_day % 3600) // 60} minutes.")
+        logging.info(f"Waiting until tomorrow 4:00 : {time_until_next_day // 3600} hours and {(time_until_next_day % 3600) // 60} minutes.\n")
         time.sleep(time_until_next_day)
 
 if __name__ == "__main__":

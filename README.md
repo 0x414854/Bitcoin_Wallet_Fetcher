@@ -4,29 +4,29 @@
 
 **A Python-based tool to automate the fetching, processing, and categorization of Bitcoin wallet addresses from online sources (_Blockchair_)**.<br>This tool **downloads data**, **decompresses it**, and **organizes it into specific categories** for further analysis or usage.
 
-## Table of Contents
+## Table of Contents 📚
 
-- [Project Description](#project-description)
-- [Table of Contents](#table-of-contents)
-- [What is Bitcoin Wallet Fetcher ?](#what-is-bitcoin-wallet-fetcher-?)
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-<!-- - [Usage](#usage)
-- [Security and Ethics](#🔐-security-and-ethics)
-- [Benchmarks](#benchmarks) -->
-- [Roadmap](#roadmap)
-- [Tree Directory](#tree-directory)
-- [Contributions](#contributions)
-- [Support the Project](#support-the-project)
-- [License](#license)
-- [Author](#author)
+- [Project Description](#project-description) 📜
+- [Table of Contents](#table-of-contents) 📚
+- [What is Bitcoin Wallet Fetcher?](#what-is-bitcoin-wallet-fetcher-?) 🧮
+- [Features](#features) ✨
+- [Prerequisites](#prerequisites) 🛠️
+- [Installation](#installation) ⚙️
+  <!-- - [Usage](#usage) ▶️ -->
+  <!-- - [Security and Ethics](#🔐-security-and-ethics) 🔐 -->
+  <!-- - [Benchmarks](#benchmarks) 📊 -->
+- [Roadmap](#roadmap) 🛣️
+- [Tree Directory](#tree-directory) 🌳
+- [Contributions](#contributions) 🤝
+- [Support the Project](#support-the-project) 💖
+- [License](#license) 📄
+- [Author](#author) 👤
 
-## Project Description
+## Project Description 📜
 
 **Bitcoin Wallet Fetcher** (_BWF_) is designed to retrieve large datasets of Bitcoin wallet addresses from specified online sources (Blockchair). **It automates downloading, decompressing, and categorizing these addresses into meaningful groupings such as balances, prefix types, and subsets for quick reference or downstream processing.**
 
-## What is Bitcoin Wallet Fetcher ?
+## What is Bitcoin Wallet Fetcher ? 🧮
 
 Bitcoin Wallet Fetcher is a Python script that :
 
@@ -35,14 +35,14 @@ Bitcoin Wallet Fetcher is a Python script that :
 3. Processes Bitcoin wallet addresses and organizes them based on prefixes (`1`, `3`, or `bc1`) and `balance` criteria.
 4. Outputs the processed data into structured text files for easier consumption.
 
-## Features
+## Features ✨
 
 - **Automated File Handling** : Automatically fetch and decompress files.
 - **Categorization** : Splits wallet data into categories based on prefix types and balance ranges.
 - **Scheduling** : Includes a daily scheduled task to run the entire pipeline at a specified time.
 - **Logging** : Provides detailed logs for every step of the process.
 
-## Prerequisites
+## Prerequisites 🛠️
 
 - `Python 3.11+`
 - `Google Chrome` installed
@@ -53,7 +53,7 @@ Bitcoin Wallet Fetcher is a Python script that :
   - `tqdm`
   - `python-dotenv`
 
-## Installation
+## Installation ⚙️
 
 1. **Clone this repository**
 
@@ -89,7 +89,7 @@ Bitcoin Wallet Fetcher is a Python script that :
    python3 bitcoinWalletFetcher.py
    ```
 
-## **Roadmap**
+## **Roadmap** 🛣️
 
 - [ ] 💾 **Enable sharing of raw and processed files**
 - [ ] 🪙 **Add support for other cryptocurrencies**
@@ -107,7 +107,7 @@ Bitcoin Wallet Fetcher is a Python script that :
   - [ ] **Spanich**
   - [ ] **Portuguese**
 
-## **Tree Directory**
+## **Tree Directory** 🌳
 
 .
 <br>├── (.env)
@@ -116,15 +116,15 @@ Bitcoin Wallet Fetcher is a Python script that :
 <br>├── bitcoinWalletFetcher.py
 <br>├── README.md
 <br>├── requirements.txt
-<br>├── docs/
-<br>└── (logs/)
+<br>├── 📁 docs/
+<br>└── 📁 (logs/)
 <br>&nbsp;&nbsp;&nbsp;&nbsp;└── bwf.log
 
-## **Contributions**
+## **Contributions** 🤝
 
 Contributions are welcome ! Feel free to open issues or submit pull requests.
 
-## **Support the Project**
+## **Support the Project** 💖
 
 **Giving it a star on GitHub ⭐**
 
@@ -166,10 +166,10 @@ Thank you so much for your generosity. Your support truly means the world to us 
 
 **➡️ Take action now ! Every contribution, big or small, makes a huge impact.**
 
-## **License**
+## **License** 📄
 
 This project is licensed under the **[MIT License](https://github.com/0x414854/Satoshi_Hunter/blob/main/LICENSE)**.
 
-## **Author**
+## **Author** 👤
 
 [**0x414854**](https://github.com/0x414854)
