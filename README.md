@@ -1,14 +1,14 @@
 ![Static Badge](https://img.shields.io/badge/python-%233776ab?logo=python&logoColor=white) ![Static Badge](https://img.shields.io/badge/MIT%20License-grey) ![Static Badge](https://img.shields.io/badge/bitcoin-%23ff9900?logo=bitcoin&logoColor=white)
 
-# **Bitcoin Wallet Fetcher**
+# **Wallet Fetcher**
 
-**A Python-based tool to automate the fetching, processing, and categorization of Bitcoin wallet addresses from online sources (_Blockchair_)**.<br>This tool **downloads data**, **decompresses it**, and **organizes it into specific categories** for further analysis or usage.
+**A Python-based tool to automate the fetching, processing, and categorization of cryptocurrency wallet addresses from online sources (_Blockchair_)**.<br>This tool **downloads data**, **decompresses it**, and **organizes it into specific categories** for further analysis or usage.
 
-## Table of Contents 📚
+## 📚 Table of Contents
 
-- [Project Description](#project-description) 📜
-- [Table of Contents](#table-of-contents) 📚
-- [What is Bitcoin Wallet Fetcher?](#what-is-bitcoin-wallet-fetcher-?) 🧮
+- [📜Project Description](#📜-project-description)
+- [📚 Table of Contents](#📚-table-of-contents)
+- [What is Wallet Fetcher?](#what-is-wallet-fetcher-?) 🧮
 - [Features](#features) ✨
 - [Prerequisites](#prerequisites) 🛠️
 - [Installation](#installation) ⚙️
@@ -22,9 +22,9 @@
 - [License](#license) 📄
 - [Author](#author) 👤
 
-## Project Description 📜
+## 📜 Project Description
 
-**Bitcoin Wallet Fetcher** (_BWF_) is designed to retrieve large datasets of Bitcoin wallet addresses from specified online sources (Blockchair). **It automates downloading, decompressing, and categorizing these addresses into meaningful groupings such as balances, prefix types, and subsets for quick reference or downstream processing.**
+**Wallet Fetcher** (_WF_) is designed to retrieve large datasets of Bitcoin wallet addresses from specified online sources (Blockchair). **It automates downloading, decompressing, and categorizing these addresses into meaningful groupings such as balances, prefix types, and subsets for quick reference or downstream processing.**
 
 ## What is Bitcoin Wallet Fetcher ? 🧮
 
@@ -41,6 +41,7 @@ Bitcoin Wallet Fetcher is a Python script that :
 - **Categorization** : Splits wallet data into categories based on prefix types and balance ranges.
 - **Scheduling** : Includes a daily scheduled task to run the entire pipeline at a specified time.
 - **Logging** : Provides detailed logs for every step of the process.
+- **Cryptocurrency Supported** : `BTC`, `BCH`
 
 ## Prerequisites 🛠️
 
@@ -76,11 +77,18 @@ Bitcoin Wallet Fetcher is a Python script that :
 
    ```makefile
    DOWNLOAD_FOLDER = Path/To/Download/Folder
-   BASE_FILENAME = blockchair_bitcoin_addresses_latest
-   LOG_FILE = ./logs/bwf.log
-   PROCESSED_FOLDER = Your/Processed/Folder/Path
-   WEBSITE_URL = https://gz.blockchair.com/bitcoin/addresses/
-   XPATH_FILE = /html/body/pre/a[2]
+   BTC_PROCESSED_FOLDER = Your/Processed/BTC/Folder/Path
+   BCH_PROCESSED_FOLDER = Your/Processed/BCH/Folder/Path
+
+   LOG_FILE = './logs/wf.log'
+
+   BTC_WEBSITE_URL = 'https://gz.blockchair.com/bitcoin/addresses/'
+   BCH_WEBSITE_URL = 'https://gz.blockchair.com/bitcoin-cash/addresses/'
+
+   BTC_BASE_FILENAME = 'blockchair_bitcoin_addresses_latest'
+   BCH_BASE_FILENAME = 'blockchair_bitcoin-cash_addresses_latest'
+
+   XPATH_FILE = '/html/body/pre/a[2]'
    ```
 
 4. **You're ready to run the program** !
@@ -93,7 +101,7 @@ Bitcoin Wallet Fetcher is a Python script that :
 
 - [ ] 💾 **Enable sharing of raw and processed files**
 - [ ] 🪙 **Add support for other cryptocurrencies**
-  - [ ] **BCH**
+  - [✅] **BCH**
   - [ ] **DOGE**
   - [ ] **EGLD**
   - [ ] **ETH**
@@ -101,11 +109,13 @@ Bitcoin Wallet Fetcher is a Python script that :
   - [ ] **SOL**
   - [ ] **XRP**
   - [ ] **ZCASH**
+- [ ] ⚙️ **Add Cryptocurrency Selection via Command Line Arguments**
 - [ ] 🎓 **Implement multilingual support**
   - [ ] **French**
   - [ ] **Italian**
   - [ ] **Spanich**
   - [ ] **Portuguese**
+- [✅] 🛡️ **Add random User-Agent to bypass bot detection restrictions**
 
 ## **Tree Directory** 🌳
 
@@ -113,12 +123,12 @@ Bitcoin Wallet Fetcher is a Python script that :
 <br>├── (.env)
 <br>├── .gitignore
 <br>├── LICENSE
-<br>├── bitcoinWalletFetcher.py
 <br>├── README.md
 <br>├── requirements.txt
+<br>├── walletFetcher.py
 <br>├── 📁 docs/
 <br>└── 📁 (logs/)
-<br>&nbsp;&nbsp;&nbsp;&nbsp;└── bwf.log
+<br>&nbsp;&nbsp;&nbsp;&nbsp;└── wf.log
 
 ## **Contributions** 🤝
 

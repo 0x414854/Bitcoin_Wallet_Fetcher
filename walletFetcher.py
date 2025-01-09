@@ -10,15 +10,23 @@ from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from shadePy import Colors
 from tqdm import tqdm
+
+GREEN, RED, CYAN, BRIGHT_GREY, YELLOW, RESET = (
+    Colors.GREEN, Colors.RED, Colors.CYAN,Colors.BRIGHTGREY, Colors.YELLOW, Colors.RESET
+)
 
 load_dotenv()
 
+BCH_BASE_FILENAME = os.getenv('BCH_BASE_FILENAME')
+BCH_WEBSITE_URL = os.getenv('BCH_WEBSITE_URL')
+BTC_BASE_FILENAME = os.getenv('BTC_BASE_FILENAME')
+BTC_WEBSITE_URL = os.getenv('BTC_WEBSITE_URL')
 DOWNLOAD_FOLDER = os.getenv('DOWNLOAD_FOLDER')
-BASE_FILENAME = os.getenv('BTC_BASE_FILENAME')
 LOG_FILE = os.getenv("LOG_FILE")
-PROCESSED_FOLDER = os.getenv('PROCESSED_FOLDER')
-WEBSITE_URL = os.getenv('WEBSITE_URL')
+BTC_PROCESSED_FOLDER = os.getenv('BTC_PROCESSED_FOLDER')
+BCH_PROCESSED_FOLDER = os.getenv('BCH_PROCESSED_FOLDER')
 XPATH_FILE = os.getenv('XPATH_FILE')
 
 logging.basicConfig(
@@ -100,27 +108,45 @@ class FileProcessor:
         logging.info(f"File decompressed : {decompressed_path}")
         return decompressed_path
     
-    def process_file(self, file_path):
+    def process_file(self, file_path, crypto_type):
         today_date = datetime.now().strftime('%Y%m%d')
-        output_folder = os.path.join(self.processed_folder, f"WalletsBTC_{today_date}")
+        output_folder = os.path.join(self.processed_folder, f"Wallets{crypto_type}_{today_date}")
         os.makedirs(output_folder, exist_ok=True)
 
-        files = {
-            '1_no_balance': open(os.path.join(output_folder, '1_no_balance_all.txt'), 'w'),
-            '3_no_balance': open(os.path.join(output_folder, '3_no_balance_all.txt'), 'w'),
-            'bc1_no_balance': open(os.path.join(output_folder, 'bc1_no_balance_all.txt'), 'w'),
-            '1_with_balance': open(os.path.join(output_folder, '1_with_balance_all.txt'), 'w'),
-            '3_with_balance': open(os.path.join(output_folder, '3_with_balance_all.txt'), 'w'),
-            'bc1_with_balance': open(os.path.join(output_folder, 'bc1_with_balance_all.txt'), 'w'),
-            '1_balance_0_1_no_balance': open(os.path.join(output_folder, '1_no_balance_get_01.txt'), 'w'),
-            '3_balance_0_1_no_balance': open(os.path.join(output_folder, '3_no_balance_get_01.txt'), 'w'),
-            'bc1_balance_0_1_no_balance': open(os.path.join(output_folder, 'bc1_no_balance_get_01.txt'), 'w'),
-            '1_balance_0_1_with_balance': open(os.path.join(output_folder, '1_with_balance_get_01.txt'), 'w'),
-            '3_balance_0_1_with_balance': open(os.path.join(output_folder, '3_with_balance_get_01.txt'), 'w'),
-            'bc1_balance_0_1_with_balance': open(os.path.join(output_folder, 'bc1_with_balance_get_01.txt'), 'w'),
-            'all_no_balance': open(os.path.join(output_folder, 'all_no_balance.txt'), 'w'),
-            'all_with_balance': open(os.path.join(output_folder, 'all_with_balance.txt'), 'w')
-        }
+        if crypto_type == "Bitcoin (BTC)":
+            files = {
+                '1_no_balance': open(os.path.join(output_folder, '1_no_balance_all.txt'), 'w'),
+                '3_no_balance': open(os.path.join(output_folder, '3_no_balance_all.txt'), 'w'),
+                'bc1_no_balance': open(os.path.join(output_folder, 'bc1_no_balance_all.txt'), 'w'),
+                '1_with_balance': open(os.path.join(output_folder, '1_with_balance_all.txt'), 'w'),
+                '3_with_balance': open(os.path.join(output_folder, '3_with_balance_all.txt'), 'w'),
+                'bc1_with_balance': open(os.path.join(output_folder, 'bc1_with_balance_all.txt'), 'w'),
+                '1_balance_0_1_no_balance': open(os.path.join(output_folder, '1_no_balance_get_01.txt'), 'w'),
+                '3_balance_0_1_no_balance': open(os.path.join(output_folder, '3_no_balance_get_01.txt'), 'w'),
+                'bc1_balance_0_1_no_balance': open(os.path.join(output_folder, 'bc1_no_balance_get_01.txt'), 'w'),
+                '1_balance_0_1_with_balance': open(os.path.join(output_folder, '1_with_balance_get_01.txt'), 'w'),
+                '3_balance_0_1_with_balance': open(os.path.join(output_folder, '3_with_balance_get_01.txt'), 'w'),
+                'bc1_balance_0_1_with_balance': open(os.path.join(output_folder, 'bc1_with_balance_get_01.txt'), 'w'),
+                'all_no_balance': open(os.path.join(output_folder, 'all_no_balance.txt'), 'w'),
+                'all_with_balance': open(os.path.join(output_folder, 'all_with_balance.txt'), 'w')
+            }
+        elif crypto_type == "Bitcoin Cash (BCH)":
+            files = {
+                'p_no_balance': open(os.path.join(output_folder, 'p_no_balance_all.txt'), 'w'),
+                'q_no_balance': open(os.path.join(output_folder, 'q_no_balance_all.txt'), 'w'),
+                'other_no_balance': open(os.path.join(output_folder, 'other_no_balance_all.txt'), 'w'),
+                'p_with_balance': open(os.path.join(output_folder, 'p_with_balance_all.txt'), 'w'),
+                'q_with_balance': open(os.path.join(output_folder, 'q_with_balance_all.txt'), 'w'),
+                'other_with_balance': open(os.path.join(output_folder, 'other_with_balance_all.txt'), 'w'),
+                'p_balance_1_no_balance': open(os.path.join(output_folder, 'p_no_balance_get_01.txt'), 'w'),
+                'q_balance_1_no_balance': open(os.path.join(output_folder, 'q_no_balance_get_01.txt'), 'w'),
+                'other_balance_1_no_balance': open(os.path.join(output_folder, 'other_no_balance_get_01.txt'), 'w'),
+                'p_balance_1_with_balance': open(os.path.join(output_folder, 'p_with_balance_get_01.txt'), 'w'),
+                'q_balance_1_with_balance': open(os.path.join(output_folder, 'q_with_balance_get_01.txt'), 'w'),
+                'other_balance_1_with_balance': open(os.path.join(output_folder, 'other_with_balance_get_01.txt'), 'w'),
+                'all_no_balance': open(os.path.join(output_folder, 'all_no_balance.txt'), 'w'),
+                'all_with_balance': open(os.path.join(output_folder, 'all_with_balance.txt'), 'w')
+            }
 
         with open(file_path, newline='') as f:
             total_lines = sum(1 for _ in f) - 1
@@ -137,7 +163,11 @@ class FileProcessor:
                 files['all_no_balance'].write(f"{address}\n")
                 files['all_with_balance'].write(f"{address}\t{balance_btc:.8f}\n")
 
-                prefix = '1' if address.startswith('1') else '3' if address.startswith('3') else 'bc1'
+                if crypto_type == "Bitcoin (BTC)":
+                    prefix = '1' if address.startswith('1') else '3' if address.startswith('3') else 'bc1'
+                elif crypto_type == "Bitcoin Cash (BCH)":
+                    prefix = 'p' if address.startswith('p') else 'q' if address.startswith('q') else 'other'
+
                 files[f'{prefix}_no_balance'].write(f"{address}\n")
                 files[f'{prefix}_with_balance'].write(f"{address}\t{balance_btc:.8f}\n")
 
@@ -151,21 +181,56 @@ class FileProcessor:
         shutil.move(file_path, os.path.join(output_folder, os.path.basename(file_path)))
         logging.info(f"File processed and moved to : {output_folder}")
 
-def main():
-    downloader = FileDownloader(DOWNLOAD_FOLDER, WEBSITE_URL, XPATH_FILE)
-    processor = FileProcessor(DOWNLOAD_FOLDER, PROCESSED_FOLDER)
+def choose_crypto():
+    logging.info("Starting the cryptocurrency choice process.")
+
+    print(f"\n{BRIGHT_GREY}Which crypto wallet addresses would you like to process ?{RESET}\n")
+    print(f"{YELLOW}[1]{RESET} Bitcoin ({CYAN}BTC{RESET})")
+    print(f"{YELLOW}[2]{RESET} Bitcoin Cash ({CYAN}BCH{RESET})")
+    print(f"{YELLOW}[0]{RESET} Exit")
+
+    while True:
+        try:
+            choice = int(input(f"\n{BRIGHT_GREY}Enter the number of your choice : {RESET}"))
+            logging.info(f"User entered choice : {choice}")
+
+            if choice == 1:
+                logging.info("User chose Bitcoin (BTC).")
+                return 'Bitcoin (BTC)'
+            elif choice == 2:
+                logging.info("User chose Bitcoin Cash (BCH).")
+                return 'Bitcoin Cash (BCH)'
+            elif choice == 0:
+                logging.info("User chose to exit the program.")
+                print("Exiting the program.")
+                exit()
+            else:
+                logging.warning(f"Invalid option entered : {choice}. Prompting user again.")
+                print(f"\n{RED}ERROR: Invalid option, please choose a valid number (1, 2, or 0 to exit).{RESET}")
+        except ValueError:
+            logging.error("Invalid input entered. Expected an integer.")
+            print(f"\n{RED}ERROR: Invalid input, please enter a number.{RESET}")
+
+def main(crypto_choice):
+    if crypto_choice == "Bitcoin (BTC)":
+        downloader = FileDownloader(DOWNLOAD_FOLDER, BTC_WEBSITE_URL, XPATH_FILE)
+        processor = FileProcessor(DOWNLOAD_FOLDER, BTC_PROCESSED_FOLDER)
+    else:
+        downloader = FileDownloader(DOWNLOAD_FOLDER, BCH_WEBSITE_URL, XPATH_FILE)
+        processor = FileProcessor(DOWNLOAD_FOLDER, BCH_PROCESSED_FOLDER)
 
     try:
         downloader.download_file()
-        latest_file = processor.get_latest_file(BASE_FILENAME)
+        base_filename = BTC_BASE_FILENAME if crypto_choice == "Bitcoin (BTC)" else BCH_BASE_FILENAME
+        latest_file = processor.get_latest_file(base_filename)
         decompressed_file = processor.decompress_file(latest_file)        
-        processor.process_file(decompressed_file)
+        processor.process_file(decompressed_file, crypto_choice)
     except Exception as e:
         logging.error(f"Error: {e}")
 
-
 def schedule_daily_task():
     while True:
+        crypto_choice = choose_crypto()
         now = datetime.now()
         target_day = now
         if now.hour >= 6:
@@ -185,7 +250,7 @@ def schedule_daily_task():
             time.sleep(time_until_execution)
         
         logging.info("Starting the scheduled task.")
-        main()
+        main(crypto_choice)
         logging.info("Task completed.")
 
         tomorrow_4am = random_time + timedelta(days=1)
