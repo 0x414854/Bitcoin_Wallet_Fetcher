@@ -8,34 +8,35 @@
 
 - [📜Project Description](#📜-project-description)
 - [📚 Table of Contents](#📚-table-of-contents)
-- [What is Wallet Fetcher?](#what-is-wallet-fetcher-?) 🧮
-- [Features](#features) ✨
-- [Prerequisites](#prerequisites) 🛠️
-- [Installation](#installation) ⚙️
-  <!-- - [Usage](#usage) ▶️ -->
-  <!-- - [Security and Ethics](#🔐-security-and-ethics) 🔐 -->
-  <!-- - [Benchmarks](#benchmarks) 📊 -->
-- [Roadmap](#roadmap) 🛣️
-- [Tree Directory](#tree-directory) 🌳
-- [Contributions](#contributions) 🤝
-- [Support the Project](#support-the-project) 💖
-- [License](#license) 📄
-- [Author](#author) 👤
+- [🧮 What is Wallet Fetcher?](#🧮-what-is-wallet-fetcher-?)
+- [✨ Features](#✨-features)
+- [🛠️ Prerequisites](#🛠️-prerequisites)
+- [⚙️ Installation](#⚙️-installation)
+  <!-- - [▶️ Usage](#▶️-usage)  -->
+  <!-- - [🔐 Security and Ethics](#🔐-security-and-ethics) -->
+  <!-- - [📊 Benchmarks](#📊-benchmarks)  -->
+- [🛣️ Roadmap](#🛣️-roadmap)
+- [🌳 Tree Directory](#🌳-tree-directory)
+- [🤝 Contributions](#🤝-contributions)
+- [💖 Support the Project](#💖-support-the-project)
+- [📄 License](#📄-license)
+- [👤 Author](#👤-author)
 
 ## 📜 Project Description
 
 **Wallet Fetcher** (_WF_) is designed to retrieve large datasets of Bitcoin wallet addresses from specified online sources (Blockchair). **It automates downloading, decompressing, and categorizing these addresses into meaningful groupings such as balances, prefix types, and subsets for quick reference or downstream processing.**
 
-## What is Bitcoin Wallet Fetcher ? 🧮
+## 🧮 What is Wallet Fetcher ?
 
-Bitcoin Wallet Fetcher is a Python script that :
+Wallet Fetcher is a Python script that :
 
 1. Automates file downloads from websites using `Selenium`.
 2. Decompresses `.gz` files to extract datasets.
 3. Processes Bitcoin wallet addresses and organizes them based on prefixes (`1`, `3`, or `bc1`) and `balance` criteria.
-4. Outputs the processed data into structured text files for easier consumption.
+4. Processes Bitcoin Cash wallet addresses and organizes them based on prefixes (`q`, `p`, or `other`) and `balance` criteria.
+5. Outputs the processed data into structured text files for easier consumption.
 
-## Features ✨
+## ✨ Features
 
 - **Automated File Handling** : Automatically fetch and decompress files.
 - **Categorization** : Splits wallet data into categories based on prefix types and balance ranges.
@@ -43,18 +44,19 @@ Bitcoin Wallet Fetcher is a Python script that :
 - **Logging** : Provides detailed logs for every step of the process.
 - **Cryptocurrency Supported** : `BTC`, `BCH`
 
-## Prerequisites 🛠️
+## 🛠️ Prerequisites
 
 - `Python 3.11+`
 - `Google Chrome` installed
 - `ChromeDriver` compatible with your Chrome version
 - Environment variables configured in a `.env` file (_see [Installation](#installation)_)
 - Required Python libraries (_see [Installation](#installation)_)
+  - `python-dotenv`
+  - `shadePy`
   - `selenium`
   - `tqdm`
-  - `python-dotenv`
 
-## Installation ⚙️
+## ⚙️ Installation
 
 1. **Clone this repository**
 
@@ -97,11 +99,11 @@ Bitcoin Wallet Fetcher is a Python script that :
    python3 bitcoinWalletFetcher.py
    ```
 
-## **Roadmap** 🛣️
+## 🛣️ Roadmap
 
 - [ ] 💾 **Enable sharing of raw and processed files**
 - [ ] 🪙 **Add support for other cryptocurrencies**
-  - [✅] **BCH**
+  - ✅ **BCH**
   - [ ] **DOGE**
   - [ ] **EGLD**
   - [ ] **ETH**
@@ -109,15 +111,15 @@ Bitcoin Wallet Fetcher is a Python script that :
   - [ ] **SOL**
   - [ ] **XRP**
   - [ ] **ZCASH**
-- [ ] ⚙️ **Add Cryptocurrency Selection via Command Line Arguments**
+- [ ] 🔧 **Add Cryptocurrency Selection via Command Line Arguments**
 - [ ] 🎓 **Implement multilingual support**
   - [ ] **French**
   - [ ] **Italian**
   - [ ] **Spanich**
   - [ ] **Portuguese**
-- [✅] 🛡️ **Add random User-Agent to bypass bot detection restrictions**
+- ✅ 🛡️ **Add random User-Agent to bypass bot detection restrictions**
 
-## **Tree Directory** 🌳
+## 🌳 Tree Directory
 
 .
 <br>├── (.env)
@@ -130,24 +132,24 @@ Bitcoin Wallet Fetcher is a Python script that :
 <br>└── 📁 (logs/)
 <br>&nbsp;&nbsp;&nbsp;&nbsp;└── wf.log
 
-## **Contributions** 🤝
+## 🤝 Contributions
 
 Contributions are welcome ! Feel free to open issues or submit pull requests.
 
-## **Support the Project** 💖
+## 💖 Support the Project
 
 **Giving it a star on GitHub ⭐**
 
 **Your support makes a huge difference !** This project is maintained with the energy, time, and passion of its contributors.
 <br>If you enjoy this project or want to help sustain its development, **consider making a donation**.
 
-### 🫶 Why Donate ?
+### Why Donate ? 🫶
 
 - Help cover development and hardware costs.
 - Contribute to new features and improvements.
 - Support an open-source project to keep it free and accessible to everyone.
 
-### 🪙 Cryptocurrency Wallets
+### Cryptocurrency Wallets 🪙
 
 You can donate using the following cryptocurrency addresses:
 
@@ -176,10 +178,10 @@ Thank you so much for your generosity. Your support truly means the world to us 
 
 **➡️ Take action now ! Every contribution, big or small, makes a huge impact.**
 
-## **License** 📄
+## 📄 License
 
-This project is licensed under the **[MIT License](https://github.com/0x414854/Satoshi_Hunter/blob/main/LICENSE)**.
+This project is licensed under the **[MIT License](https://github.com/0x414854/Bitcoin_Wallet_Fetcher/blob/main/License)**.
 
-## **Author** 👤
+## 👤 Author
 
 [**0x414854**](https://github.com/0x414854)

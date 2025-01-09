@@ -1,3 +1,4 @@
 selenium
 tqdm
 python-dotenv
+shadePy
