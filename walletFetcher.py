@@ -35,14 +35,6 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-USER_AGENTS = [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:118.0) Gecko/20100101 Firefox/118.0",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 12_6_2) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Safari/605.1.15",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_2_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Linux; Android 13; SM-G998B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Mobile Safari/537.36",
-    "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/117.0.0.0 Mobile/15E148 Safari/604.1"
-]
-
 class FileDownloader:
     def __init__(self, download_folder, website_url, xpath_file):
         self.download_folder = download_folder
@@ -57,10 +49,7 @@ class FileDownloader:
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
-        user_agent = random.choice(USER_AGENTS)
-        chrome_options.add_argument(f"user-agent={user_agent}")
-        logging.info(f"Using User-Agent : {user_agent}")
-
+        
         return webdriver.Chrome(options=chrome_options)
 
     def download_file(self):
@@ -138,8 +127,8 @@ class FileProcessor:
                 'p_with_balance': open(os.path.join(output_folder, 'p_with_balance_all.txt'), 'w'),
                 'q_with_balance': open(os.path.join(output_folder, 'q_with_balance_all.txt'), 'w'),
                 'other_with_balance': open(os.path.join(output_folder, 'other_with_balance_all.txt'), 'w'),
-                'p_balance_1_no_balance': open(os.path.join(output_folder, 'p_no_balance_get_01.txt'), 'w'),
-                'q_balance_1_no_balance': open(os.path.join(output_folder, 'q_no_balance_get_01.txt'), 'w'),
+                'p_balance_01_no_balance': open(os.path.join(output_folder, 'p_no_balance_get_01.txt'), 'w'),
+                'q_balance_01_no_balance': open(os.path.join(output_folder, 'q_no_balance_get_01.txt'), 'w'),
                 'other_balance_1_no_balance': open(os.path.join(output_folder, 'other_no_balance_get_01.txt'), 'w'),
                 'p_balance_1_with_balance': open(os.path.join(output_folder, 'p_with_balance_get_01.txt'), 'w'),
                 'q_balance_1_with_balance': open(os.path.join(output_folder, 'q_with_balance_get_01.txt'), 'w'),

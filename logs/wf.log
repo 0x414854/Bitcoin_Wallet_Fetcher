@@ -3,3 +3,18 @@
 2025-01-09 11:57:26,735 - INFO - User chose Bitcoin Cash (BCH).
 2025-01-09 11:57:26,735 - INFO - Next execution time : 2025-01-10 05:58:00
 2025-01-09 11:57:26,735 - INFO - Waiting 18 hours and 0 minutes before execution.
+2025-01-12 12:54:57,472 - INFO - Starting the cryptocurrency choice process.
+2025-01-12 12:54:59,042 - INFO - User entered choice : 2
+2025-01-12 12:54:59,042 - INFO - User chose Bitcoin Cash (BCH).
+2025-01-12 12:54:59,042 - INFO - Next execution time : 2025-01-13 04:33:00
+2025-01-12 12:54:59,042 - INFO - Waiting 15 hours and 38 minutes before execution.
+2025-01-13 05:05:56,784 - INFO - Starting the scheduled task.
+2025-01-13 05:06:03,648 - INFO - Accessing the website to download the file.
+2025-01-13 05:06:11,904 - INFO - Download in progress...
+2025-01-13 06:55:05,650 - INFO - File downloaded successfully.
+2025-01-13 06:55:05,794 - INFO - Latest file found : blockchair_bitcoin-cash_addresses_latest (1).tsv.gz
+2025-01-13 06:55:09,198 - INFO - File decompressed : /Users/arthurbarraud/Downloads/blockchair_bitcoin-cash_addresses_latest (1).tsv
+2025-01-13 06:55:12,712 - ERROR - Error: 'q_balance_0_1_no_balance'
+2025-01-13 06:55:12,717 - INFO - Task completed.
+2025-01-13 06:55:12,717 - INFO - Waiting until tomorrow 4:00 : 21.0 hours and 4.0 minutes.
+
